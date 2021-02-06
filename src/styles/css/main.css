@@ -1,0 +1,156 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: #F6F6F6;
+  font-weight: 200;
+  font-family: calibri;
+}
+
+li {
+  list-style: none;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: #333333;
+}
+
+.input {
+  border: solid lightgrey 1px;
+  border-radius: 5px;
+  padding: 3px 10px;
+}
+.btn {
+  background: #F8FA7F;
+  color: #333333;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: #EAECEF;
+  color: #333333;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 0 1em;
+  z-index: 100;
+}
+.navbar .navbar-title {
+  width: 60px;
+  height: auto;
+}
+.navbar .form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+  padding: 20px 0px;
+}
+.navbar .form .search-input {
+  width: 100%;
+}
+.navbar .nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar .navbar-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.navbar .navbar-toggler {
+  outline: transparent;
+  display: none;
+}
+.navbar .nav-item {
+  padding: 20px 10px;
+}
+.navbar .nav-item:hover, .navbar .nav-item:hover > * {
+  background: #939dad;
+  color: white;
+}
+@media (max-width: 700px) {
+  .navbar .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background: #EAECEF;
+    visibility: hidden;
+    width: 100vw;
+    height: 100vh;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -150%);
+  }
+  .navbar .navbar-nav.active {
+    transition: transform 1s ease-in-out;
+    transform: translate(-50%, 0%);
+    visibility: visible;
+  }
+  .navbar .navbar-toggler {
+    display: block;
+    border: none;
+    width: 25px;
+    height: 25px;
+  }
+  .navbar .navbar-toggler-icon {
+    display: block;
+    width: 23px;
+    height: 1px;
+    background: #333333;
+    content: "";
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    margin-left: 2px;
+    border: none;
+  }
+  .navbar .navbar-toggler-icon::after {
+    display: block;
+    width: 23px;
+    height: 1px;
+    background: #333333;
+    content: "";
+    position: absolute;
+    top: 6px;
+  }
+  .navbar .navbar-toggler-icon::before {
+    display: block;
+    width: 23px;
+    height: 1px;
+    background: #333333;
+    content: "";
+    position: absolute;
+    top: -6px;
+  }
+  .navbar .navbar-toggler-icon.active {
+    transition: all 0.5s ease-in-out;
+    transform: rotate(720deg);
+    background: transparent;
+  }
+  .navbar .navbar-toggler-icon.active::after {
+    transition: all 0.5s ease-in-out;
+    transform: translate(0px, -6px) rotate(-45deg);
+  }
+  .navbar .navbar-toggler-icon.active::before {
+    transition: all 0.5s ease-in-out;
+    transform: translate(0px, 6px) rotate(45deg);
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

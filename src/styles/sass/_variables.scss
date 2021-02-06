@@ -1,0 +1,24 @@
+
+$colors: (
+	primary:#EAECEF,
+	secondary:#CCD6E4,
+	background:#F6F6F6,
+	clear:#F8FA7F,
+	dark:#393636,
+	text:#333333
+);
+
+$devise:(
+	tiny:300px,
+	small:600px,
+	medium:700px,
+	big:1000px
+);
+
+@function color($type){
+	@return map-get($colors,$type);
+}
+
+@function devise($type){
+	@return map-get($devise,$type);
+}
