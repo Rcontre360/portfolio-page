@@ -8,7 +8,7 @@ export const List = (props)=>{
 		<ul className="navbar-nav">
 		{
 			listItems.map((item,i)=>
-				<Item {...item}>
+				<Item key={i} {...item}>
 				{item.children}
 				</Item>
 			)

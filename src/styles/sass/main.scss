@@ -108,36 +108,5 @@ a,a:visited{
 			width:25px;
 			height: 25px;
 		}
-
-		#{&}-toggler-icon{
-			@include bar;
-			@include transition(0.5s);
-			position:relative;
-			margin-left: 2px;
-			border:none;
-			&::after{
-				@include bar;
-				position:absolute;
-				top:6px;
-			}
-			&::before{
-				@include bar;
-				position:absolute;
-				top:-6px;
-			}
-			&.active{
-				@include transition(0.5s);
-				transform:rotate(720deg);
-				background:transparent;
-				&::after{
-					@include transition(0.5s);
-					transform: translate( 0px, -6px) rotate(-45deg);
-				}
-				&::before{
-					@include transition(0.5s);
-					transform:translate( 0px, 6px) rotate(45deg);
-				}
-			}
-		}
 	}
 }

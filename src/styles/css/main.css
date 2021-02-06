@@ -109,48 +109,6 @@ a, a:visited {
     width: 25px;
     height: 25px;
   }
-  .navbar .navbar-toggler-icon {
-    display: block;
-    width: 23px;
-    height: 1px;
-    background: #333333;
-    content: "";
-    transition: all 0.5s ease-in-out;
-    position: relative;
-    margin-left: 2px;
-    border: none;
-  }
-  .navbar .navbar-toggler-icon::after {
-    display: block;
-    width: 23px;
-    height: 1px;
-    background: #333333;
-    content: "";
-    position: absolute;
-    top: 6px;
-  }
-  .navbar .navbar-toggler-icon::before {
-    display: block;
-    width: 23px;
-    height: 1px;
-    background: #333333;
-    content: "";
-    position: absolute;
-    top: -6px;
-  }
-  .navbar .navbar-toggler-icon.active {
-    transition: all 0.5s ease-in-out;
-    transform: rotate(720deg);
-    background: transparent;
-  }
-  .navbar .navbar-toggler-icon.active::after {
-    transition: all 0.5s ease-in-out;
-    transform: translate(0px, -6px) rotate(-45deg);
-  }
-  .navbar .navbar-toggler-icon.active::before {
-    transition: all 0.5s ease-in-out;
-    transform: translate(0px, 6px) rotate(45deg);
-  }
 }
 
 /*# sourceMappingURL=main.css.map */

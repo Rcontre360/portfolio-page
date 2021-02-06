@@ -1,5 +1,6 @@
 import React from "react";
 import {List,ListLink} from "./list";
+import {AnimatedBtn} from "./styledComponents";
 
 export const Header = (props)=>{
 	const items = [
@@ -19,12 +20,16 @@ export const Header = (props)=>{
 }
 
 const Navbar = (props)=>{
+	const [btnActive,setBtnActive] = React.useState(false);
 	const {items,Item} = props;
 
 	return(
 		<nav className="nav-container" id="nav-bar">
-		      <button className="navbar-toggler">
-		          <i className="navbar-toggler-icon"></i>
+		      <button 
+		      	onClick={()=>setBtnActive(!btnActive)} 
+		      	className="navbar-toggler"
+		      >
+		          <AnimatedBtn active={btnActive} className="navbar-toggler-icon"></AnimatedBtn>
 		      </button>
 		      <List listItems={items} Item={Item}/>
 		</nav>
