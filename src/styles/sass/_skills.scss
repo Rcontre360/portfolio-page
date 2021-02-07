@@ -1,0 +1,75 @@
+@import "variables";
+@import "mixins";
+
+.container{
+
+	.skills_container{
+		padding: 2em;
+		text-align: center;
+		color:lightgrey;
+		width:calc(100%-2em);
+		.skill_list{
+			@include flex;
+			flex-wrap:wrap;
+			margin-top:2em;
+			justify-items: center;
+			width:100%;
+			flex-wrap: wrap;
+		}
+		.skill{
+			@include flex(column,space-between);
+			width:120px;
+			height:120px;
+			background:colors(auxiliar);
+			text-align: center;
+			background:color(primary);
+			margin: 1em;
+			.skill_main{
+				position:relative;
+				width:100%;
+				height: 100%;
+				overflow:hidden;
+				-webkit-clip-path: polygon(0% 30%, 30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%);
+    			/*clip-path: polygon(50% 0%, 100% 0, 100% 35%, 50% 70%, 0 35%, 0 );*/
+				&::before{
+					position:absolute;
+					content: "";
+					width:100%;
+					height: 100%;
+					background:color(auxiliar);
+					transition: 0.7s;
+					transform:scaleY(0);
+					transform-origin: top;
+					opacity: 0.9;
+				}
+				&:hover .skill_name{
+					transition: 1s;
+					opacity: 1;
+				}
+				&:hover::before{
+					transition: 0.5s;
+					transform: scaleY(1);
+				}
+				.skill_image{
+					width:100%;
+					height:100%;
+				}
+				.skill_name{
+					position:absolute;
+					right:50%;
+					top:50%;
+					transform: translate(50%,-50%);
+					opacity: 0;
+				}
+			}
+			.skill_chart{
+				@include flex;
+				height: 1em;
+				align-self: center;
+				width:90%;
+				opacity: 0;
+			}
+		}
+	}
+
+}

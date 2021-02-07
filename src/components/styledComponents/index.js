@@ -94,11 +94,17 @@ export const DropdownObj = styled.div`
 
 export const ScrollHeader = styled.div`
 	transition:1s;
-	${props=>{
-		console.log(props.active);
-		return props.active?
+	${props=>props.active?
 		`background:${colors["primary"]};`
 		:
-		`background:transparent;`;
-	}}
+		`background:transparent;`
+	}
+`;
+
+export const BarChart = styled.div`
+	border:solid ${colors["auxiliar"]} 2px;
+	border-radius:5px;
+	background:linear-gradient(to left,black,white);
+	background-repeat:no-repeat;
+	${props=>props.percentage && `background-size:${props.percentage}%;`}
 `;

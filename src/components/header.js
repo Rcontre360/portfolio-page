@@ -50,15 +50,15 @@ const Navbar = (props)=>{
 	const [btnActive,setBtnActive] = React.useState(false);
 	const {items,Item,onActive,...rest} = props;
 
-	const activeNavbar = ()=>{
+	/*const activeNavbar = ()=>{
 		onActive();
-		setBtnActive(!btnActive)
-	}
+		setBtnActive(active=>!active);
+	}*/
 
 	return(
 		<nav {...rest}>
 		    <button 
-		    	onClick={activeNavbar} 
+		    	onClick={()=>setBtnActive(!btnActive)} 
 		    	className="navbar-toggler"
 		    >
 		        <AnimatedBtn 

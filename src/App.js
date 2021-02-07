@@ -3,6 +3,7 @@ import {BrowserRouter} from "react-router-dom";
 import {Header} from "./components/header";
 import {HomeContent} from "./components/homeContent";
 import {SkillContent} from "./components/skillContent";
+import {ProjectContent} from "./components/projectContent";
 import "./styles/css/main.css";
 
 class App extends React.Component{
@@ -18,6 +19,7 @@ class App extends React.Component{
 			<div className="container">
 				<HomeContent/>
 				<SkillContent/>
+				<ProjectContent/>
 			</div>
 		</BrowserRouter>
 		);
