@@ -1,6 +1,8 @@
 import React from "react";
 import {BrowserRouter} from "react-router-dom";
 import {Header} from "./components/header";
+import {HomeContent} from "./components/homeContent";
+import {SkillContent} from "./components/skillContent";
 import "./styles/css/main.css";
 
 class App extends React.Component{
@@ -12,9 +14,10 @@ class App extends React.Component{
 	render(){
 		return(
 		<BrowserRouter>
+			<Header/>
 			<div className="container">
-				<Header/>
-				<h1>epa</h1>
+				<HomeContent/>
+				<SkillContent/>
 			</div>
 		</BrowserRouter>
 		);

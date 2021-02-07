@@ -1,18 +1,19 @@
 
 $colors: (
-	primary:#EAECEF,
-	secondary:#CCD6E4,
-	background:#F6F6F6,
-	clear:#F8FA7F,
-	dark:#393636,
-	text:#333333
+	primary:#2B2E4A,
+	secondary:#E84545,
+	auxiliar:#903749,
+	clear:#53354A,
+	text:#FF8965
 );
 
 $devise:(
 	tiny:300px,
-	small:600px,
-	medium:700px,
-	big:1000px
+	small:450px,
+	medium:600px,
+	normal:750px,
+	large:900,
+	huge:1100
 );
 
 @function color($type){

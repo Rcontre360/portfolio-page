@@ -2,10 +2,10 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 export const List = (props)=>{
-	const {listItems,Item} = props; 
+	const {listItems,Item,...rest} = props; 
 
 	return(
-		<ul className="navbar-nav">
+		<ul {...rest}>
 		{
 			listItems.map((item,i)=>
 				<Item key={i} {...item}>

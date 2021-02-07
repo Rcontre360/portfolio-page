@@ -1,0 +1,63 @@
+@import "variables";
+@import "mixins";
+
+.navbar{
+	@include flex(row,space-between);
+	@include theme(color(primary));
+	position: fixed;
+	top:0;
+	right:0;
+	left:0;
+	padding:0 1em;
+	z-index: 100;
+
+	.navbar-title{
+		width:60px;
+		height: auto;
+	}
+
+	.form{
+		@include flex;
+		max-width: 500px;
+		padding:20px 0px;
+		.search-input{
+			width:100%;
+		}
+	}
+	.nav-container{
+		@include flex(row,space-between); 
+	}
+	#{&}-nav{
+		@include flex(row,space-around);	
+	}
+	#{&}-toggler{
+		outline: transparent;
+		display: none;
+	}
+	.nav-item{
+		@include hover(color(primary),color(text));
+		padding:20px 10px;
+	}
+
+	@include media-under(devise(medium)){
+		
+		#{&}-nav{
+			@include flex(column);
+			justify-content: flex-start;
+			position:absolute;
+			background:color(primary);
+			width: 100vw;
+			height: 100vh;
+			top:40px;
+			left:0;
+		}
+
+		#{&}-toggler{
+			display: block;
+			background:transparent;
+			border:none;
+			width:25px;
+			height: 25px;
+		}
+	}
+}

@@ -23,19 +23,25 @@
 @mixin theme($color:color(primary)){
 	background:$color;
 	@if (lightness($color)<40%){
-		color:color(primary);
-	} @else {
 		color:color(text);
+	} @else {
+		color:color(clear);
 	}
 }
 
-@mixin hover($color,$text,$delay){
+@mixin hover($color,$text,$delay:false){
 	&:hover,&:hover>*{
 		@if $delay{
 			transition: 0.3s;
 		}
-		background:darken($color,30%);
-		color:lighten($text,80%);
+
+		@if (lightness($color)>40){
+			background:lighten($color,5%);
+			color:darken($text,10%);
+		} @else {	
+			background:darken($color,5%);
+			color:lighten($text,10%);
+		}
 	}
 }
 

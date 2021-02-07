@@ -1,0 +1,39 @@
+@import "variables";
+@import "mixins";
+
+
+*{
+	padding:0;
+	margin: 0;
+}
+
+body{
+	background: color(primary);
+	font-weight: 200;
+	font-family: calibri;
+}
+
+li{
+	list-style: none;
+}
+
+a,a:visited{
+	text-decoration: none;
+	color:color(text);
+}
+
+.input{
+	border:solid lightgrey 1px;
+	border-radius: 5px;
+	padding:3px 10px;
+	&::placeholder{
+		color:color(grey);
+	}
+}
+
+.btn{
+	@include theme(color(auxiliar));
+	border:none;
+	border-radius:5px;
+	padding:5px;
+}
