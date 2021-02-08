@@ -16,7 +16,7 @@ export const SkillContent = (props)=>{
 	];
 
 	return(
-		<div className="skills_container">
+		<div className="skills_container" id="Skills">
 			<h3>My technology stack</h3>
 			<List 
 				className="skill_list" 

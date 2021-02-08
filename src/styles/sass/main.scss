@@ -7,7 +7,22 @@
 @import "skills";
 
 .container{
-	
+	.project_container{
+		@include flex(column);
+		height:50vw;
+		background-image:
+			linear-gradient(to top,rgba(color(auxiliar),0.8),rgba(color(primary),1)),
+			url("http://localhost:3000/assets/code.jpg");
+
+		background-size:cover;
+		.project_title{
+			margin-bottom:0.5em;
+		}
+		.project_list{
+			@include flex;
+			flex-wrap:wrap;
+		}
+	}
 }
 
 

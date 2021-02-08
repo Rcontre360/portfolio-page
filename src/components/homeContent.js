@@ -13,7 +13,7 @@ export const HomeContent = (props)=>{
 	},[]);
 
 	return(
-		<main className="home_content" id="home">
+		<main className="home_content" id="Home">
 			<canvas className="image"></canvas>
 			<div className="title_wrapper">
 				<h1 className="title">I´m Rafael Contreras</h1>
