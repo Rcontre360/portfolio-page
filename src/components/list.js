@@ -54,16 +54,16 @@ export const ListLink = (props)=>{
 	const {children,router} = props;
 	return(
 		<React.Fragment>
-			{
-				router?
-				<Link to={props.to} className="nav-link">
-					{children}
-				</Link>
-				:
-				<a href={props.to} className="nav-link">
-					{children}
-				</a>
-			}
+		{
+			router?
+			<Link to={props.to} className="nav-link">
+				{children}
+			</Link>
+			:
+			<a href={props.to} className="nav-link">
+				{children}
+			</a>
+		}
 		</React.Fragment>
 	);
 }

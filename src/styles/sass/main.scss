@@ -9,7 +9,8 @@
 .container{
 	.project_container{
 		@include flex(column);
-		height:50vw;
+		padding-top:3em;
+		height:100vh;
 		background-image:
 			linear-gradient(to top,rgba(color(auxiliar),0.8),rgba(color(primary),1)),
 			url("http://localhost:3000/assets/code.jpg");
@@ -21,6 +22,9 @@
 		.project_list{
 			@include flex;
 			flex-wrap:wrap;
+		}
+		.project_popup{
+			@include flex;
 		}
 	}
 }

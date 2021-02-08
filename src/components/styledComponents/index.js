@@ -136,8 +136,9 @@ export const CarouselList = styled.ul.attrs(props=>({
 `;
 
 export const CarouselStyled = styled.div.attrs(props=>({
-	width:props.width || 200,
-	height:props.height || 200,
+	width:props.width || "200px",
+	height:props.height || "200px",
+	unit:props.unit || "px",
 	currentImage:props.currentImage || 0
 }))`
 	display:flex;
@@ -193,22 +194,22 @@ export const CarouselStyled = styled.div.attrs(props=>({
 		}
 	}
 	${props=>{
-		const {width,height,currentImage} = props;
+		const {width,height,currentImage,unit} = props;
 		let res = `
-		width:${width}px;
-		height:${height}px;
+		width:${width};
+		height:${height};
 		.carousel_list{
 			display:flex;
-			width:${width}px;
-			height:${height}px;
+			width:${width};
+			height:${height};
 			overflow: hidden;
 			position:absolute;
 			img{
-				width:${width}px;
-				height:${height}px;
+				width:${width};
+				height:${height};
 			}
 			&>*{
-				transform:translateX(${-currentImage*width}px);
+				transform:translateX(${-currentImage*parseInt(width)+unit});
 				transition:1s;
 			}
 		}`
@@ -291,7 +292,7 @@ export const ResultDisplayStyle = styled.div.attrs(props=>({
 	.results_nav{
 		display:flex;
 		flex-wrap:wrap;
-		justify-content:center;
+		justify-content:space-around;
 		box-shadow:0 0 5px ${colors["secondary"]};
 		.nav-item{
 			padding:1em;
