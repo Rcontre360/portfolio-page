@@ -1,6 +1,13 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {DropdownObj,media} from "./styledComponents";
+import styled from "styled-components";
+import {
+	DropdownObj,
+	ListStyled,
+	media,
+	customStyled,
+	flexStyle
+} from "./styledComponents";
 
 export const Navbar = (props)=>{
 	const {items,active,listClass,className,...rest} = props;
@@ -27,7 +34,7 @@ export const List = (props)=>{
 	const {listItems,Item,...rest} = props; 
 
 	return(
-		<ul {...rest}>
+		<ListStyled {...rest}>
 		{
 			listItems.map((item,i)=>
 			<ListItem key={i}>
@@ -37,7 +44,7 @@ export const List = (props)=>{
 			</ListItem>
 			)
 		}
-		</ul>
+		</ListStyled>
 	);
 }
 
@@ -51,16 +58,16 @@ export const ListItem = (props)=>{
 }
 
 export const ListLink = (props)=>{
-	const {children,router} = props;
+	const {children,router,to,...rest} = props;
 	return(
 		<React.Fragment>
 		{
 			router?
-			<Link to={props.to} className="nav-link">
+			<Link to={to?to:"#"} className="nav-link" {...rest}>
 				{children}
 			</Link>
 			:
-			<a href={props.to} className="nav-link">
+			<a href={props.to} className="nav-link" {...rest}>
 				{children}
 			</a>
 		}

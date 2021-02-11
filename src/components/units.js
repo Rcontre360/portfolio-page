@@ -1,18 +1,41 @@
 import React from "react";
-import {CarouselStyled,CardStyle,ResultDisplayStyle} from "./styledComponents";
+import {Link} from "react-router-dom";
 import {Navbar,List} from "./list";
-
+import {
+	CarouselStyled,
+	CardStyle,
+	ResultDisplayStyle,
+	AnimatedElement,
+	rotateOutAnimation,
+	PopupStyles,
+	Button,
+	Container,
+	Input
+} from "./styledComponents";
 
 export const ResultsDisplay = (props)=>{
 	const {navItems,children,...rest} = props
 
 	return(
 		<ResultDisplayStyle {...rest} className="results">
-			<Navbar 
-		 		items={navItems}
-		 		active={true}
-		 		listClass="results_nav"
-			 />
+			{props.animated?
+				<AnimatedElement 
+					animation={[rotateOutAnimation]}
+					delay="1s" 
+				>
+					<Navbar 
+				 		items={navItems}
+				 		active={true}
+				 		listClass="results_nav"
+					 />
+				</AnimatedElement>
+			:
+				<Navbar 
+			 		items={navItems}
+			 		active={true}
+			 		listClass="results_nav"
+				 />
+			}
 			<div className="results_children">
 			{children}
 			</div>
@@ -41,24 +64,33 @@ export const PopUp = (props)=>{
 	const {setOff} = props;
 
 	return(
-		<React.Fragment>
+		<PopupStyles>
 			<div className="popup_blur">
 			</div>
 			<div className="popup">
 				<button className="popup_close" onClick={setOff}>x</button>
 				{props.children}
 			</div>
-		</React.Fragment>
+		</PopupStyles>
 	);
 }
 
 
-const Circle = (props)=>{
-	const {i,...rest} = props;
+export const IconElement = (props)=>{
+	const {i,link,...rest} = props;
 	return(
-		<button {...rest}>
+	<React.Fragment>
+	{
+		link?
+		<Link to={rest.to?rest.to:""} {...rest}>
 			<i {...i}></i>
-		</button>
+		</Link>
+		:
+		<Button {...rest}>
+			<i{...i}></i>
+		</Button>
+	}
+	</React.Fragment>
 	);
 }
 
@@ -107,14 +139,23 @@ export const Carousel = (props)=>{
 							return {
 								id:"circle-"+id,
 								i:{className:"fa fa-circle"},
-								onClick:()=>setImage(id),
-								className:"btn"
+								onClick:()=>setImage(id)
 							}
 						})} 
-						Item={Circle}
+						Item={IconElement}
 					/>
 				</div>
 			</div>
 		</CarouselStyled>
 	)
+}
+
+export const InputElement = (props)=>{
+	const {input,...rest} = props;
+
+	return(
+		<Container align="space-around" {...rest}>
+			<Input type="text"{...input}/>
+		</Container>
+	);
 }

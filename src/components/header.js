@@ -9,7 +9,7 @@ export const Header = (props)=>{
 	const items = [
 		{children:"Home",to:"#Home"},
 		{children:"Skills",to:"#Skills"},
-		{children:"Proyects",to:"#Projects"},
+		{children:"Projects",to:"#Projects"},
 		{children:"Contact",to:"#Contact"},
 		{children:"About",to:"#About"}
 	];

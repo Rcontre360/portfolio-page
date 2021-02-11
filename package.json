@@ -1,5 +1,5 @@
 {
-  "name": "myreactapp",
+  "name": "portfolio_page",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,19 +10,19 @@
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4",
-    "react-router-dom":"^5.2.0",
-    "styled-components":"^5.2.1",
-    "particlesjs":"^2.2.3"
+    "react-router-dom": "^5.2.0",
+    "styled-components": "^5.2.1",
+    "particlesjs": "^2.2.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev":"concurrently \"sass --watch src/styles/sass:src/styles/css\" \"npm start\""
+    "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    
+  "eslintConfig": {},
+  "devDependencies": {
+    "morgan": "^1.10.0"
   },
   "browserslist": {
     "production": [
@@ -35,8 +35,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "morgan":"^1.10.0"
   }
 }

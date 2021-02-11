@@ -1,10 +1,13 @@
 import React from "react";
 import {BrowserRouter,Route} from "react-router-dom";
+
+import {GlobalStyle} from "./components/styledComponents";
 import {Header} from "./components/header";
 import {HomeContent} from "./components/homeContent";
-import {SkillContent} from "./components/skillContent";
+import {AboutContent} from "./components/aboutContent";
 import {ProjectContent} from "./components/projectContent";
-import "./styles/css/main.css";
+import {ContactContent} from "./components/contactContent";
+import {Footer} from "./components/footer";
 
 class App extends React.Component{
 
@@ -15,12 +18,15 @@ class App extends React.Component{
 	render(){
 		return(
 		<BrowserRouter>
+			<GlobalStyle/>
 			<Header/>
 			<div className="container">
 				<HomeContent/>
-				<SkillContent/>
+				<AboutContent/>
 				<ProjectContent/>
+				<ContactContent/>
 			</div>
+			<Footer/>
 		</BrowserRouter>
 		);
 	}
