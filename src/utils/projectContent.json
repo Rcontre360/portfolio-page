@@ -34,7 +34,8 @@
 				{"text":"Login and Registration systems","src":"/assets/projects/chat_application.png"},
 				{"text":"Get notified when user is connected","src":"/assets/projects/chat_application2.png"},
 				{"text":"Live chat with users","src":"/assets/projects/chat_application3.png"},
-				{"text":"Configure your account","src":"/assets/projects/chat_application4.png"}
+				{"text":"Configure your account","src":"/assets/projects/chat_application4.png"},
+				{"text":"Light mode in configuration!","src":"/assets/projects/chat_application5.png"}
 			],
 			"description":"A chat app built with react ad socket.io",
 			"route":"/chat_app",
