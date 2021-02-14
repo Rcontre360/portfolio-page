@@ -6,8 +6,6 @@ export const initParticles = (selector,configure)=>{
 	const screenArea = window.innerWidth*window.innerHeight;
 	const numParticles = Math.floor(screenArea*100/800000);
 
-	console.log(numParticles)
-
 	window.onload = ()=>{
 		Particles.init({
 			connectParticles:true,
@@ -64,61 +62,4 @@ export const useWindowResize = (size)=>{
 	return isBigger;
 }
 
-export const projectsData = [
-		{
-			name:"Chat Application",
-			images:[
-				{text:"React",src:"/assets/react.png"},
-				{text:"Node",src:"/assets/node.png"},
-				{text:"CSS",src:"/assets/css.png"},
-				{text:"Javascript",src:"/assets/javascript.png"},
-			],
-			description:"A chat app built with react ad socket.io",
-			route:"/chat_app",
-			originalRoute:"/chat_app",
-			labels:["javascript","react","node","express","mongo"],
-			id:0
-		},
-		{
-			name:"Calculator",
-			images:[
-				{text:"React",src:"/assets/react.png"},
-				{text:"Node",src:"/assets/node.png"},
-				{text:"CSS",src:"/assets/css.png"},
-				{text:"Javascript",src:"/assets/javascript.png"},
-			],
-			description:"A chat app built with react ad socket.io",
-			route:"/calculator",
-			originalRoute:"/calculator",
-			labels:["javascript","react"],
-			id:1
-		},
-		{
-			name:"Docs page",
-			images:[
-				{text:"React",src:"/assets/react.png"},
-				{text:"Node",src:"/assets/node.png"},
-				{text:"CSS",src:"/assets/css.png"},
-				{text:"Javascript",src:"/assets/javascript.png"},
-			],
-			description:"A chat app built with react ad socket.io",
-			route:"/docs_page",
-			originalRoute:"/docs_page",
-			labels:["webpage"],
-			id:2
-		},
-		{
-			name:"Movie Searcher",
-			images:[
-				{text:"React",src:"/assets/react.png"},
-				{text:"Node",src:"/assets/node.png"},
-				{text:"CSS",src:"/assets/css.png"},
-				{text:"Javascript",src:"/assets/javascript.png"},
-			],
-			description:"A chat app built with react ad socket.io",
-			route:"/movie_searcher",
-			originalRoute:"/movie_searcher",
-			labels:["react","javascript"],
-			id:3
-		}
-	];
+export const projectsData = []

@@ -577,8 +577,9 @@ export const CarouselStyled = styled.div.attrs(props=>({
 		padding:1%;
 		bottom:0;
 		width:98%;
-		color:${colors["clear"]};
+		color:${colors["text"]};
 		font-weight:bolder;
+		z-index:100;
 		.left, .right{
 			position:absolute;
 			padding:0 1em;
@@ -646,8 +647,7 @@ export const CardStyle = styled.div.attrs(props=>({
 	${props=>props.scale && hoverStyles("scale")}
 	${props=>props.appear && `
 		.card_body{
-			display:flex;
-			justify-content:center;
+			${flexStyle()}
 			top:0;
 			right:0;
 			width:100%;
@@ -657,6 +657,11 @@ export const CardStyle = styled.div.attrs(props=>({
 			position:absolute;
 			background:${colors["primary"]};
 			color:${colors["text"]};
+			&>*{
+				${flexStyle()}
+				display:block;
+				width:70%;
+			}
 		}
 		${hoverStyles(false," .card_body",css`opacity:0.9;`)}
 		

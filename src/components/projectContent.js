@@ -1,6 +1,9 @@
 import React from "react";
 import {css} from "styled-components";
+import marked from "marked";
 import {Route,Link,useHistory} from "react-router-dom";
+import projectsData from "../utils/projectContent.json";
+import {shortenRouterPath,useWindowResize} from "../utils";
 import {
 	AnimatedElement,
 	moveAnimation,
@@ -17,11 +20,6 @@ import {
 	Navbar,
 	ListLink
 } from "./list";
-import {
-	shortenRouterPath,
-	projectsData,
-	useWindowResize
-} from "../utils";
 import {
 	Carousel,
 	PopUp,
@@ -71,7 +69,7 @@ export const ProjectContent = (props)=>{
 
 			background-image:
 			linear-gradient(to top,rgba(144, 55, 73, 0.7),${colors["primary"]}),
-			url("http://localhost:3000/assets/code-low.jpg");
+			url("/assets/code-low.jpg");
 			
 
 			background-size:cover;
@@ -113,31 +111,13 @@ export const ProjectContent = (props)=>{
 
 export const Project = (props)=>{
 	const [activePopup,setActivePopup] = React.useState(false);
-	const {name,images,description,route,id} = props;
+	const {name,images,description,route,id,projectPages} = props;
 	const history = useHistory();
 
 	const windowMedium = !useWindowResize(600);
 	const windowNormal = !useWindowResize(750);
 	const windowHuge = useWindowResize(1200);
 	const windowOverHuge = useWindowResize(1700);
-
-	const projectPages = [
-		{children:"Description",
-		to:`${route}/description`,
-		router:true},
-
-		{children:"features",
-		to:`${route}/features`,
-		router:true},
-
-		{children:"Technologies/Dependencies",
-		to:`${route}/details`,
-		router:true},
-
-		{children:"Links",
-		to:`${route}/links`,
-		router:true},
-	];
 
 	return(
 	<React.Fragment>
@@ -248,19 +228,43 @@ export const Project = (props)=>{
 						<ResultsDisplay 
 							width={windowNormal?"70vw":"50vw"} 
 							height="60vh" 
-							navItems={projectPages}
+							navItems={
+							projectPages.map(page=>{
+								page.children = page.title
+								return {...page,to:`${route}${page.to}`}
+							})}
 							css={`
+								${media("huge",`
+									font-size:130%;
+								`,false)}
+								margin-left:0.5em;
 								.nav-item{
 									padding:1em 5px;
 								}
 							`}
 						>
 						{
-							projectPages.map((page,id)=>
-								<Route path={page.to} key={id}>
-									<h1>{page.children}</h1>
+							projectPages.map((page,id)=>{
+								const {to,title,content} = page;
+
+								return(
+								<Route 
+									path={`${route}${to}`} 
+									key={id}
+								>
+									<Container 
+										flex="column" 
+										align="flex-start"
+									>
+										<h2>{title}</h2>
+										<div dangerouslySetInnerHTML={
+											{__html:marked(content)}
+										}>
+										</div>
+									</Container>
 								</Route>
-							)
+								);
+							})
 						}
 						</ResultsDisplay>
 					</Container>
