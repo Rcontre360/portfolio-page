@@ -21,13 +21,13 @@ export const AboutContent = (props)=>{
 	const bigWindow = useWindowResize(600);
 
 	const technologies = [
-		{name:"React",skill:90,image:setRelativeUrl("/assets/react.png"),projects:[],id:0},
-		{name:"Node",skill:80,image:setRelativeUrl("/assets/node.png"),projects:[],id:1},
-		{name:"CSS",skill:90,image:setRelativeUrl("/assets/css.png"),projects:[],id:2},
-		{name:"Javascript",skill:80,image:setRelativeUrl("/assets/javascript.png"),projects:[],id:3},
-		{name:"MongoDB",skill:70,image:setRelativeUrl("/assets/mongo.png"),projects:[],id:4},
-		{name:"Html",skill:70,image:setRelativeUrl("/assets/html.png"),projects:[],id:5},
-		{name:"Express",skill:70,image:setRelativeUrl("/assets/express.png"),projects:[],id:6}
+		{name:"React",skill:90,image:"/assets/react.png",projects:[],id:0},
+		{name:"Node",skill:80,image:"/assets/node.png",projects:[],id:1},
+		{name:"CSS",skill:90,image:"/assets/css.png",projects:[],id:2},
+		{name:"Javascript",skill:80,image:"/assets/javascript.png",projects:[],id:3},
+		{name:"MongoDB",skill:70,image:"/assets/mongo.png",projects:[],id:4},
+		{name:"Html",skill:70,image:"/assets/html.png",projects:[],id:5},
+		{name:"Express",skill:70,image:"/assets/express.png",projects:[],id:6}
 	];
 
 	return(
@@ -112,7 +112,7 @@ const Skill = (props)=>{
 		<SkillElement>
 			<div className="skill_main">
 				<h4 className="skill_name">{name}</h4>
-				<img className="skill_image" src={image?image:""}/>
+				<img className="skill_image" src={setRelativeUrl(image)}/>
 			</div>
 		<AnimatedElement
 			animation={[fadeAnimation]}

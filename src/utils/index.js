@@ -63,8 +63,5 @@ export const useWindowResize = (size)=>{
 }
 
 export const setRelativeUrl = str=>{
-	return process.env.NODE_ENV==="production"?
-		process.env.REACT_APP_BASE_PATH + str
-		:
-		str
+	return process.env.REACT_APP_BASE_PATH + str;
 }

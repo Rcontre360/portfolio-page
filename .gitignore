@@ -1,5 +1,4 @@
 node_modules
 public/fontawesome
 .eslintcache
-docs/fontawesome
-build/fontawesome
+build
