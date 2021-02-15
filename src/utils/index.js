@@ -62,4 +62,9 @@ export const useWindowResize = (size)=>{
 	return isBigger;
 }
 
-export const projectsData = []
+export const setRelativeUrl = str=>{
+	return process.env.NODE_ENV==="production"?
+		process.env.REACT_APP_BASE_PATH + str
+		:
+		str
+}

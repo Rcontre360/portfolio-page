@@ -3,7 +3,11 @@ import {css} from "styled-components";
 import marked from "marked";
 import {Route,Link,useHistory} from "react-router-dom";
 import projectsData from "../utils/projectContent.json";
-import {shortenRouterPath,useWindowResize} from "../utils";
+import {
+	shortenRouterPath,
+	useWindowResize,
+	setRelativeUrl
+} from "../utils";
 import {
 	AnimatedElement,
 	moveAnimation,
@@ -26,6 +30,16 @@ import {
 	ResultsDisplay,
 	CardElement
 } from "./units";
+
+const setProjectsUrl = projects=>{
+	return projects.map(project=>{
+		project.images = project.images.map(img=>{
+			img.src = setRelativeUrl(img.src);
+			return img;
+		});
+		return project;
+	});
+}
 
 export const ProjectContent = (props)=>{
 	const [projects,setProjects] = React.useState(projectsData);
@@ -61,6 +75,7 @@ export const ProjectContent = (props)=>{
 
 		{children:"Plain webpage",to:"/webpage",router:true,onClick:appearProjects.bind(this)}
 	];
+
 	return(
 	<MainContainer
 		id="Projects"
@@ -69,7 +84,7 @@ export const ProjectContent = (props)=>{
 
 			background-image:
 			linear-gradient(to top,rgba(144, 55, 73, 0.7),${colors["primary"]}),
-			url("/assets/code-low.jpg");
+			url(${setRelativeUrl("/assets/code-low.jpg")});
 			
 
 			background-size:cover;
@@ -101,7 +116,7 @@ export const ProjectContent = (props)=>{
 					${flexStyle()}
 					flex-wrap:wrap;
 				`} 
-				listItems={projects} 
+				listItems={setProjectsUrl(projects)} 
 				Item={Project}
 			/>
 		</ResultsDisplay>
