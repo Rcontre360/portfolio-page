@@ -1,5 +1,7 @@
 import React from "react";
 import {List,ListLink} from "./list";
+import {GrowingPercentage} from "./units";
+import {useWindowResize} from "../utils";
 import {
 	SkillElement,
 	AnimatedElement,
@@ -9,10 +11,14 @@ import {
 	fadeAnimation,
 	moveRotateAnimation,
 	moveAnimation,
-	rotateOutAnimation
+	rotateOutAnimation,
+	scaleAnimation,
+	media,
+	colors
 } from "./styledComponents";
 
 export const AboutContent = (props)=>{
+	const bigWindow = useWindowResize(600);
 
 	const technologies = [
 		{name:"React",skill:90,image:"/assets/react.png",projects:[],id:0},
@@ -25,7 +31,7 @@ export const AboutContent = (props)=>{
 	];
 
 	return(
-		<MainContainer id="Skills" 
+		<MainContainer id="About" 
 		css={`
 			padding-top:4em;
 		`}>
@@ -36,9 +42,26 @@ export const AboutContent = (props)=>{
 			</AnimatedElement>
 			<AboutMe/>
 			<List 
-				css={`${flexStyle()}flex-wrap:wrap;`}
+				css={`
+					${flexStyle()}
+					flex-wrap:wrap;
+					${media("huge",`
+						width:60%;
+						min-width:600px;
+					`)}
+					${media("normal",`
+						width:100%;
+						min-width:0px;
+					`)}
+					${media("medium",`
+						${flexStyle("column")}
+						li{
+							width:80%;
+						}
+					`)}
+				`}
 				listItems={technologies} 
-				Item={Skill}
+				Item={bigWindow?Skill:SkillBarStyle}
 			/>
 		</MainContainer>
 	);
@@ -53,7 +76,7 @@ const AboutMe = (props)=>{
 				<BorderedStyled 
 					css={`
 						font-size:120%;
-						padding:1em;
+						padding:2em;
 						margin:0.5em 1em 0 1em;
 					`}>
 					<p>
@@ -70,7 +93,7 @@ const AboutMe = (props)=>{
 }
 
 const Skill = (props)=>{
-	const {name,image,projects,skill,id} = props;
+	const {name,image,skill,id} = props;
 
 	return(
 	<AnimatedElement 
@@ -95,22 +118,37 @@ const Skill = (props)=>{
 	);
 }
 
-export const GrowingPercentage = (props)=>{
-	const [percentage,setSkillPercentage] = React.useState(0);
-	const {limit,...rest} = props;
-
-	React.useEffect(()=>{
-		
-		const proximity = (limit-percentage)/100*limit;
-
-		if (percentage<limit)
-			setTimeout(setSkillPercentage, 10/(proximity/50), prev=>prev+1*Math.floor(proximity/5+1));
-
-	},[percentage]);
-
+const SkillBarStyle = (props)=>{
+	const {name,skill,id} = props;
 	return(
-		<p {...rest}>
-			{percentage}%
-		</p>
+		<AnimatedElement
+			animation={[fadeAnimation]}
+			css={`
+				width:100%;
+				.bar{
+					${flexStyle("row","flex-start")}
+					width:${skill}%;
+					height:1em;
+					font-size:120%;
+					font-weight:bolder;
+					background:${colors["auxiliar"]};
+					margin:0.3em;
+					padding:1px;
+					transform-origin:left;
+					animation-fill-mode: forwards;
+					animation-timing-function: ease-out;
+				}
+			`}
+		>
+			<h4>{name}</h4>
+			<AnimatedElement
+				animation={[scaleAnimation]}
+				renderOnActive
+			>
+				<div className="bar">
+					<GrowingPercentage className="percentage" limit={skill}/>
+				</div>
+			</AnimatedElement>
+		</AnimatedElement>
 	);
 }

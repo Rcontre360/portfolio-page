@@ -61,15 +61,17 @@ export const CardElement = (props)=>{
 }
 
 export const PopUp = (props)=>{
-	const {setOff} = props;
+	const {setOff,...rest} = props;
 
 	return(
-		<PopupStyles>
+		<PopupStyles {...rest}>
 			<div className="popup_blur">
 			</div>
-			<div className="popup">
+			<div className="popup_wrapper">
+				<div className="popup">
+					{props.children}
+				</div>
 				<button className="popup_close" onClick={setOff}>x</button>
-				{props.children}
 			</div>
 		</PopupStyles>
 	);
@@ -77,17 +79,19 @@ export const PopUp = (props)=>{
 
 
 export const IconElement = (props)=>{
-	const {i,link,...rest} = props;
+	const {i,link,children,...rest} = props;
 	return(
 	<React.Fragment>
 	{
 		link?
 		<Link to={rest.to?rest.to:""} {...rest}>
 			<i {...i}></i>
+			{children}
 		</Link>
 		:
 		<Button {...rest}>
 			<i{...i}></i>
+			{children}
 		</Button>
 	}
 	</React.Fragment>
@@ -117,6 +121,7 @@ export const Carousel = (props)=>{
 				className="carousel_list" 
 				listItems={images} 
 				Item={"img"}
+				css={`justify-content:flex-start;`}
 			/>
 			<div className="carousel_foot">
 				<button 
@@ -137,6 +142,7 @@ export const Carousel = (props)=>{
 						className="carousel_elements"
 						listItems={images.map((i,id)=>{
 							return {
+								css:`background:transparent;`,
 								id:"circle-"+id,
 								i:{className:"fa fa-circle"},
 								onClick:()=>setImage(id)
@@ -155,7 +161,27 @@ export const InputElement = (props)=>{
 
 	return(
 		<Container align="space-around" {...rest}>
-			<Input type="text"{...input}/>
+			<Input type="text" {...input}/>
 		</Container>
+	);
+}
+
+export const GrowingPercentage = (props)=>{
+	const [percentage,setSkillPercentage] = React.useState(0);
+	const {limit,...rest} = props;
+
+	React.useEffect(()=>{
+		
+		const proximity = (limit-percentage)/100*limit;
+
+		if (percentage<limit)
+			setTimeout(setSkillPercentage, 10/(proximity/50), prev=>prev+1*Math.floor(proximity/5+1));
+
+	},[percentage]);
+
+	return(
+		<p {...rest}>
+			{percentage}%
+		</p>
 	);
 }

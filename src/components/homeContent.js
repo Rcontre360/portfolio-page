@@ -6,7 +6,8 @@ import {
 	customStyled,
 	flexStyle,
 	Container,
-	colors
+	colors,
+	media
 } from "./styledComponents";
 
 const ImageWrapper = styled.div`
@@ -42,6 +43,13 @@ export const HomeContent = (props)=>{
 			<Canvas className="image"></Canvas>
 			<Container 
 				css={`
+					${media("tiny",`
+						top:25%;
+					`)}
+					${media("normal",`
+						font-size:120%;
+						width:100%;
+					`)}
 					${flexStyle("column")}
 					width:50%;
 					color:lightgrey;

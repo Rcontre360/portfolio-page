@@ -1,6 +1,14 @@
 import React from "react";
-import {List,ListLink,Navbar} from "./list";
-import {AnimatedBtn,ScrollHeader} from "./styledComponents";
+import {
+	List,
+	ListLink,
+	Navbar
+} from "./list";
+import {
+	AnimatedBtn,
+	ScrollHeader,
+	media
+} from "./styledComponents";
 
 export const Header = (props)=>{
 	const [scrollActive,setScrollActive] = React.useState(false);
@@ -8,28 +16,28 @@ export const Header = (props)=>{
 
 	const items = [
 		{children:"Home",to:"#Home"},
-		{children:"Skills",to:"#Skills"},
+		{children:"About",to:"#About"},
 		{children:"Projects",to:"#Projects"},
 		{children:"Contact",to:"#Contact"},
-		{children:"About",to:"#About"}
 	];
 
-	const handleScroll =e=>{
-		if (window.scrollY>100)
-			setScrollActive(active=>true);
-		else if (window.scrollY<30)
-			setScrollActive(active=>false);
-	}
+	
 
 	React.useEffect(()=>{
+
+		const handleScroll =e=>{
+			if (window.scrollY>100 && !scrollActive)
+				setScrollActive(true);
+			else if (window.scrollY<30 && scrollActive)
+				setScrollActive(false);
+		}
 
 		window.addEventListener("scroll",handleScroll);
 
 		return()=>{
 			window.removeEventListener("scroll",handleScroll);
 		}
-
-	},[]);
+	},[scrollActive]);
 
 	return(
 		<ScrollHeader  

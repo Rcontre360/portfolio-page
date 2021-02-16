@@ -8,8 +8,8 @@ export const sizes = {
 	small:"450px",
 	medium:"600px",
 	normal:"750px",
-	large:"900",
-	huge:"1100"
+	large:"900px",
+	huge:"1100px"
 }
 
 export const colors = {
@@ -118,6 +118,17 @@ export const rotateOutAnimation = keyframes`
 	}
 `;
 
+export const scaleAnimation = keyframes`
+	from {
+		transform:scaleX(0);
+		transform-origin:left;
+	}
+	to {
+		translate:scale(1);
+		transform-origin:left;
+	}
+`;
+
 export const GlobalStyle = createGlobalStyle`
 	*{
 		padding:0;
@@ -139,6 +150,20 @@ export const GlobalStyle = createGlobalStyle`
 		text-decoration: none;
 		color:${colors["text"]};
 	}
+	&::-webkit-scrollbar{
+		width:0.5em;
+		height:0.5em;
+		background:${colors["primary"]};
+		border:solid ${colors["secondary"]} 2px;
+		border-radius:10px;
+	}
+	&::-webkit-scrollbar-button{
+		background:${colors["auxiliar"]};
+	}
+	&::-webkit-scrollbar-thumb{
+		background:grey;
+		border-radius:10px;
+	}
 `;
 
 const Animated = styled.div.attrs(props=>({
@@ -159,6 +184,7 @@ const Animated = styled.div.attrs(props=>({
 		:
 		css`visibility:hidden;`}
 	}
+	${stylesFunction}
 `
 
 export const AnimatedElement = (props)=>{
@@ -228,8 +254,8 @@ const BaseInput = props=>{
 
 	return(
 	<React.Fragment>
-		<label>{name}</label>
-		{Input?<Input {...rest}/>:<input {...rest}/>}
+		<label htmlFor={name} >{name}</label>
+		{Input?<Input id={name} {...rest}/>:<input id={name} {...rest}/>}
 	</React.Fragment>
 	);
 }
@@ -473,7 +499,7 @@ export const ScrollHeader = styled.div`
 			position:absolute;
 			background:${colors["text"]};
 			transform:scaleX(0);
-			width:100%;
+			width:85%;
 			height: 3px;
 			bottom:0;
 			left:0;
@@ -515,29 +541,6 @@ export const ScrollHeader = styled.div`
 	${stylesFunction}
 `;
 
-export const CarouselList = styled.ul.attrs(props=>({
-	width:props.width || 200,
-	height:props.height || 200,
-	currentImage:props.currentImage || 0
-}))`
-	display:flex;
-	${props=>{
-		const {width,height} = props;
-
-		let res = `width:${width}px;`;
-		res = res+`height:${height}px;`;
-		res = res+`img{${res}}`;
-		return res;
-	}}
-	${props=>props.currentImage>=0 
-		&& 
-	`&>*{
-		transform:translateX(${-props.currentImage*props.width}px);
-		transition:1s;
-	}`}
-	${stylesFunction}
-`;
-
 export const CarouselStyled = styled.div.attrs(props=>({
 	width:props.width || "200px",
 	height:props.height || "200px",
@@ -545,6 +548,7 @@ export const CarouselStyled = styled.div.attrs(props=>({
 	currentImage:props.currentImage || 0
 }))`
 	display:flex;
+	position: relative;
 	.carousel_foot_foot{
 		text-align:center;
 		grid-area:foot;
@@ -557,17 +561,17 @@ export const CarouselStyled = styled.div.attrs(props=>({
 		}
 		.btn{
 			background:transparent;
+			border:solid black 4em;
 			color:${colors["primary"]};
 		}
 		${props=>`
-			#circle-${props.currentImage}{
-				color:${colors["text"]};
+			#circle-${props.currentImage} > *{
+				color:${colors["auxiliar"]};
 			}
 		`}
 	}
 	.carousel_foot{
 		display:flex;
-		position: relative;
 		justify-content:center;
 		align-items:flex-end;
 		padding:1%;
@@ -578,7 +582,7 @@ export const CarouselStyled = styled.div.attrs(props=>({
 		.left, .right{
 			position:absolute;
 			padding:0 1em;
-			background:transparent;
+			background:rgba(144, 55, 73, 0.5);
 			margin:1em;
 			width:3em;
 			height:3em;
@@ -603,6 +607,7 @@ export const CarouselStyled = styled.div.attrs(props=>({
 		height:${height};
 		.carousel_list{
 			display:flex;
+			justify-content:flex-start;
 			width:${width};
 			height:${height};
 			overflow: hidden;
@@ -614,6 +619,10 @@ export const CarouselStyled = styled.div.attrs(props=>({
 			&>*{
 				transform:translateX(${-currentImage*parseInt(width)+unit});
 				transition:1s;
+			}
+			.nav-item{
+				margin:0;
+				padding:0;
 			}
 		}`
 		return res;
@@ -642,7 +651,7 @@ export const CardStyle = styled.div.attrs(props=>({
 			top:0;
 			right:0;
 			width:100%;
-			height:${props.height};
+			height:100%;
 			transition:0.7s;
 			opacity:0;
 			position:absolute;
@@ -670,28 +679,26 @@ export const ResultDisplayStyle = styled.div.attrs(props=>({
 	width:props.width || "600px",
 	height:props.height || "400px"
 }))`
+	${stylesFunction}
 	.results_children{
-		display:flex;
-		justifyContent:center;
+		${flexStyle()}
 		padding:1em;
 		& >*{
 			width:100%;
 		}
 	}
 	.results_nav{
-		display:flex;
+		${flexStyle("row","space-around")}
 		flex-wrap:wrap;
-		justify-content:space-around;
 		box-shadow:0 0 5px ${colors["secondary"]};
 		.nav-item{
-			padding:1em;
 			position:relative;
 			&::after{
 				content: "";
 				position:absolute;
 				background:${colors["text"]};
 				transform:scaleX(0);
-				width:100%;
+				width:85%;
 				height: 3px;
 				bottom:0;
 				left:0;
@@ -707,7 +714,6 @@ export const ResultDisplayStyle = styled.div.attrs(props=>({
 			height:${height};
 		`;
 	}}
-	${stylesFunction}
 `;
 
 export const SkillElement = styled.div`
@@ -771,32 +777,44 @@ export const PopupStyles = styled.div`
 		-webkit-filter:blur(20px);
 	}
 
-	.popup{
-		color:${colors["text"]};
-		background:${colors["primary"]};
+	.popup_wrapper{
+		${flexStyle()}
+		max-width:90vw;
+		max-height:90vh;
+		position:relative;
 		position:fixed;
 		transform:translate(50%,-50%);
 		right:50%;
 		top:50%;
-		padding: 2vw;
-		border:solid ${colors["secondary"]} 5px;
-		border-radius: 10px;
 		z-index: 300;
 	}
 
+	.popup{
+		max-width:90vw;
+		max-height:90vh;	
+		overflow:scroll;
+		color:${colors["text"]};
+		background:${colors["primary"]};
+		width:100%;
+		height:100%;
+		padding: 1em;
+		border:solid ${colors["secondary"]} 5px;
+		border-radius: 10px;
+	}
+
 	.popup_close{
-		width:25px;
-		height: 25px;
+		width:35px;
+		height: 35px;
 		position: absolute;
 		top:-12.5px;
-		right:-12.5px;
+		right:-1vw;
+		font-size:120%;
 		background: ${colors["primary"]};
 		color:${colors["text"]};
 		border:solid ${colors["secondary"]} 3px;
 		border-radius: 50%;
 		outline:none;
 	}
-
 	.popup_close:hover{
 		background: ${colors["auxiliar"]};
 		color:${colors["primary"]};
