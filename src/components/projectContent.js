@@ -45,9 +45,8 @@ export const ProjectContent = (props)=>{
 	const [projects,setProjects] = React.useState(projectsData);
 
 	const appearProjects = async e=>{
-		console.log("clicked")
 		if (e.target.className==="nav-link"){
-			const path = e.target.href.split("/")[3];
+			const path = e.target.href.split("/")[4];
 
 			let projectsShown = projectsData.filter(el=>{
 				const pass = el.labels.find(label=>label===path);
@@ -126,7 +125,15 @@ export const ProjectContent = (props)=>{
 
 export const Project = (props)=>{
 	const [activePopup,setActivePopup] = React.useState(false);
-	const {name,images,description,route,id,projectPages} = props;
+	const {
+		name,
+		images,
+		description,
+		route,
+		id,
+		projectPages,
+		links
+	} = props;
 	const history = useHistory();
 
 	const windowMedium = !useWindowResize(600);
@@ -148,9 +155,11 @@ export const Project = (props)=>{
 				appear
 				width="30vw"
 				height="30vw"
-				onClick={()=>{
-					history.push(`${route}/description`);
-					setActivePopup(true);
+				onClick={e=>{
+					if (!e.target.classList.contains("no_popup")){
+						history.push(`${route}/description`);
+						setActivePopup(true);
+					}
 				}}
 				css={css`
 					${media("normal",`
@@ -186,15 +195,23 @@ export const Project = (props)=>{
 			>	
 
 				<p>{description}</p>
-				<div className="links">
-					<Link to="#">
-						<i className="i fa fa-eye"></i>
-						<p>live</p>
-					</Link>
-					<Link to="#">
-						<i className="fa fa-code"></i>
-						<p>repository</p>
-					</Link>
+				<div className="links no_popup">
+					<a 
+						className="no_popup" 
+						href={links.live} 
+						target="_blank"
+					>
+						<i className="i fa fa-eye no_popup"></i>
+						<p className="no_popup">live</p>
+					</a>
+					<a 
+						className="no_popup" 
+						href={links.code} 
+						target="_blank"
+					>
+						<i className="fa fa-code no_popup"></i>
+						<p className="no_popup" >repository</p>
+					</a>
 				</div>
 			</CardElement>
 		</AnimatedElement>
@@ -252,6 +269,9 @@ export const Project = (props)=>{
 								${media("huge",`
 									font-size:130%;
 								`,false)}
+								${media("normal",`
+									margin-top:1em;
+								`)}
 								margin-left:0.5em;
 								.nav-item{
 									padding:1em 5px;

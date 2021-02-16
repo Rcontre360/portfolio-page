@@ -1,6 +1,6 @@
 import React from "react";
 import {List,ListLink} from "./list";
-import {GrowingPercentage} from "./units";
+import {GrowingPercentage,ReadMore} from "./units";
 import {useWindowResize,setRelativeUrl} from "../utils";
 import {
 	SkillElement,
@@ -23,10 +23,10 @@ export const AboutContent = (props)=>{
 	const technologies = [
 		{name:"React",skill:90,image:"/assets/react.png",projects:[],id:0},
 		{name:"Node",skill:80,image:"/assets/node.png",projects:[],id:1},
-		{name:"CSS",skill:90,image:"/assets/css.png",projects:[],id:2},
-		{name:"Javascript",skill:80,image:"/assets/javascript.png",projects:[],id:3},
+		{name:"CSS",skill:85,image:"/assets/css.png",projects:[],id:2},
+		{name:"Javascript",skill:90,image:"/assets/javascript.png",projects:[],id:3},
 		{name:"MongoDB",skill:70,image:"/assets/mongo.png",projects:[],id:4},
-		{name:"Html",skill:70,image:"/assets/html.png",projects:[],id:5},
+		{name:"Html",skill:90,image:"/assets/html.png",projects:[],id:5},
 		{name:"Express",skill:70,image:"/assets/express.png",projects:[],id:6}
 	];
 
@@ -75,25 +75,28 @@ const AboutMe = (props)=>{
 			<article>
 				<BorderedStyled 
 					css={`
+						${media("tiny",`
+							font-size:105%;
+						`)}
 						font-size:120%;
-						padding:2em;
+						padding:2em 2em 0.5em 2em;
 						margin:0.5em 1em 0 1em;
 					`}>
+					<ReadMore>
 					<p>
 					Welcome to my portfolio!
 
-					I´m a Computer Science student living at Caracas, Venezuela. I started programming when I was 17 and since then I´m passionate with it. 
+					I´m a Computer Science student and a Frontend Web developer living at Caracas, Venezuela. I´m a passionate programmer who loves to build applications and, in general, anything with code. 
 					</p>
-					<br/>
 					<p>
 					When it comes to building applications I focus mostly on its performance, scalability and user experience. I love to set up animations and improve my code´s speed and eficiency. 
 					Also I know many things and technologies related to backend, nevertheless I´m more proficent building the frontend.
 					</p>
-					<br/>
 					<p>
 					I love to build software and learn new tools, techniques and technologies. One of my favorite ones is React, mostly because of its flexibility.
 					Also I love to use Javascript as my principal programming language.
 					</p>
+					</ReadMore>
 				</BorderedStyled>
 			</article>
 		</AnimatedElement>

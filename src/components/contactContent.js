@@ -79,25 +79,19 @@ export const ContactContent = (props)=>{
 		i:{className:"fab fa-github icon"},
 		className:"btn",
 		link:true,
-		children:<p className="icon_text">https://www.testurl.com/rafael/account</p>
+		children:<p href="https://github.com/Rcontre360/" target="_black" className="icon_text">https://github.com/Rcontre360/</p>
 	},
 	{
 		i:{className:"fa fa-envelope icon"},
 		className:"btn",
 		link:true,
-		children:<p className="icon_text">https://www.testurl.com/rafael/account</p>
+		children:<p className="icon_text">rcontreraspimentel@gmail.com</p>
 	},
 	{
 		i:{className:"fab fa-linkedin icon"},
 		className:"btn",
 		link:true,
-		children:<p className="icon_text">https://www.testurl.com/rafael/account</p>
-	},
-	{
-		i:{className:"fab fa-stack-overflow icon"},
-		className:"btn",
-		link:true,
-		children:<p className="icon_text">https://www.testurl.com/rafael/account</p>
+		children:<p href="https://www.linkedin.com/in/rafael-contreras-pimentel-8b0b67203" target="_blank"className="icon_text">https://www.linkedin.com/in/rafael-contreras-pimentel-8b0b67203</p>
 	}
 	]
 

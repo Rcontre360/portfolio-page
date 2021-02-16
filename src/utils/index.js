@@ -63,5 +63,6 @@ export const useWindowResize = (size)=>{
 }
 
 export const setRelativeUrl = str=>{
-	return process.env.REACT_APP_BASE_PATH + str;
+	const alreadyHasPath = "/"+str.split("/")[1]===process.env.REACT_APP_BASE_PATH;
+	return alreadyHasPath? str: process.env.REACT_APP_BASE_PATH + str;
 }

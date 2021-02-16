@@ -25,7 +25,7 @@
 
 				{
 				"title":"Links",
-				"content":"<br><h3>View live project</h3><a>https://somedomain.com/application</a><br><br><h3>View code</h3><a>http://somedomain.com/application</a>",
+				"content":"<br><h3>View live project</h3><a>https://somedomain.com/application</a><br><br><h3>View code</h3><a>https://github.com/Rcontre360/Chat-Application</a>",
 				"to":"/links",
 				"router":true
 				}
@@ -41,6 +41,10 @@
 			"route":"/chat_app",
 			"originalRoute":"/chat_app",
 			"labels":["javascript","react","node","express","mongo"],
+			"links":{
+				"live":"#",
+				"code":"https://github.com/Rcontre360/Chat-Application"
+			},
 			"id":0
 		},
 		{
@@ -53,7 +57,7 @@
 			},
 			{
 				"title":"Links",
-				"content":"<br><h3>View live project</h3><a>https://somedomain.com/application</a><br><br><h3>View code</h3><a>http://somedomain.com/application</a>",
+				"content":"<br><h3>View live project</h3><a>https://rcontre360.github.io/react_calculator</a><br><br><h3>View code</h3><a>https://github.com/Rcontre360/react_calculator</a>",
 				"to":"/links",
 				"router":true
 			}],
@@ -66,6 +70,10 @@
 			"route":"/calculator",
 			"originalRoute":"/calculator",
 			"labels":["javascript","react"],
+			"links":{
+				"live":"https://rcontre360.github.io/react_calculator",
+				"code":"https://github.com/Rcontre360/react_calculator"
+			},
 			"id":1
 		},
 		{
@@ -79,7 +87,7 @@
 				},
 				{
 					"title":"Links",
-					"content":"<br><h3>View live project</h3><a>https://somedomain.com/application</a><br><br><h3>View code</h3><a>http://somedomain.com/application</a>",
+					"content":"<br><h3>View live project</h3><a>https://rcontre360.github.io/documentation-page</a><br><br><h3>View code</h3><a>https://github.com/Rcontre360/documentation-page</a>",
 					"to":"/links",
 					"router":true
 				}
@@ -93,6 +101,10 @@
 			"route":"/docs_page",
 			"originalRoute":"/docs_page",
 			"labels":["webpage"],
+			"links":{
+				"live":"https://rcontre360.github.io/documentation-page",
+				"code":"https://github.com/Rcontre360/documentation-page"
+			},
 			"id":2
 		},
 		{
@@ -106,7 +118,7 @@
 				},
 				{
 					"title":"Links",
-					"content":"<br><h3>View live project</h3><a>https://somedomain.com/application</a><br><br><h3>View code</h3><a>http://somedomain.com/application</a>",
+					"content":"<br><h3>View live project</h3><a>https://somedomain.com/application</a><br><br><h3>View code</h3><a>https://github.com/Rcontre360/Chat-Application</a>",
 					"to":"/links",
 					"router":true
 				}
@@ -120,6 +132,10 @@
 			"route":"/landing_page",
 			"originalRoute":"/landing_page",
 			"labels":["webpage"],
+			"links":{
+				"live":"#",
+				"code":"https://github.com/Rcontre360/Chat-Application"
+			},
 			"id":3
 		},
 		{
@@ -133,7 +149,7 @@
 				},
 				{
 					"title":"Links",
-					"content":"<br><h3>View live project</h3><a>https://somedomain.com/application</a><br><br><h3>View code</h3><a>http://somedomain.com/application</a>",
+					"content":"<br><h3>View live project</h3><a>https://rcontre360.github.io/tribute-page</a><br><br><h3>View code</h3><a>https://github.com/Rcontre360/tribute-page</a>",
 					"to":"/links",
 					"router":true
 				}
@@ -146,6 +162,10 @@
 			"route":"/tribute_page",
 			"originalRoute":"/tribute_page",
 			"labels":["webpage"],
+			"links":{
+				"live":"https://rcontre360.github.io/tribute-page",
+				"code":"https://github.com/Rcontre360/tribute-page"
+			},
 			"id":4
 		},
 		{
@@ -159,7 +179,7 @@
 				},
 				{
 					"title":"Links",
-					"content":"<br><h3>View live project</h3><a>https://somedomain.com/application</a><br><br><h3>View code</h3><a>http://somedomain.com/application</a>",
+					"content":"<br><h3>View live project</h3><a>https://somedomain.com/application</a><br><br><h3>View code</h3><a>https://github.com/Rcontre360/Movie-Searcher</a>",
 					"to":"/links",
 					"router":true
 				}
@@ -172,6 +192,10 @@
 			"route":"/movie_searcher",
 			"originalRoute":"/movie_searcher",
 			"labels":["react","javascript"],
+			"links":{
+				"live":"#",
+				"code":"https://github.com/Rcontre360/Movie-Searcher"
+			},
 			"id":5
 		}
 ]

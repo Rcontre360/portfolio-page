@@ -17,7 +17,7 @@ class App extends React.Component{
 
 	render(){
 		return(
-		<BrowserRouter>
+		<BrowserRouter basename="/portfolio-project">
 			<GlobalStyle/>
 			<Header/>
 			<div className="container">

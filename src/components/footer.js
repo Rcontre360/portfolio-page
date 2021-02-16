@@ -16,10 +16,8 @@ const FooterStyled = customStyled("footer",`
 
 export const Footer = (props)=>{
 	const icons = [
-		{i:{className:"fab fa-github"},className:"btn",link:true},
-		{i:{className:"fa fa-envelope"},className:"btn",link:true},
-		{i:{className:"fab fa-linkedin"},className:"btn",link:true},
-		{i:{className:"fab fa-stack-overflow"},className:"btn",link:true}
+		{target:"_blank",href:"https://github.com/Rcontre360",i:{className:"fab fa-github"},className:"btn",link:true},
+		{target:"_blank",href:"https://www.linkedin.com/in/rafael-contreras-pimentel-8b0b67203",i:{className:"fab fa-linkedin"},className:"btn",link:true},
 	];
 
 	return(

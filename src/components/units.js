@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {Navbar,List} from "./list";
+import {Navbar,List,ListLink} from "./list";
 import {
 	CarouselStyled,
 	CardStyle,
@@ -10,7 +10,10 @@ import {
 	PopupStyles,
 	Button,
 	Container,
-	Input
+	Input,
+	BorderedStyled,
+	hoverStyles,
+	media
 } from "./styledComponents";
 
 export const ResultsDisplay = (props)=>{
@@ -80,14 +83,15 @@ export const PopUp = (props)=>{
 
 export const IconElement = (props)=>{
 	const {i,link,children,...rest} = props;
+	
 	return(
 	<React.Fragment>
 	{
 		link?
-		<Link to={rest.to?rest.to:""} {...rest}>
+		<ListLink {...rest}>
 			<i {...i}></i>
 			{children}
-		</Link>
+		</ListLink>
 		:
 		<Button {...rest}>
 			<i{...i}></i>
@@ -183,5 +187,95 @@ export const GrowingPercentage = (props)=>{
 		<p {...rest}>
 			{percentage}%
 		</p>
+	);
+}
+
+const SeeMoreLess = props=>{
+	const {seeMore,seeLess,onClick} = props;
+	return (
+	<Container 
+		css={`
+		${media("small",`
+			flex-direction:column-reverse;
+		`)}
+		padding:0;
+		`} 
+		align="space-around"
+	>
+	{
+		seeMore && 
+		<BorderedStyled 
+			width="1px" 
+			padding="5px" 
+			delay="0.5s"
+			css={`
+				background:transparent;
+				margin-top:0.5em;
+			`}
+		>
+			<Button 
+				onClick={()=>onClick(1)}
+				css={`background:transparent;`}
+			>
+				...See more
+			</Button>
+		</BorderedStyled>
+	}
+	{
+		seeLess &&
+		<BorderedStyled 
+			width="1px" 
+			padding="5px" 
+			delay="0.5s"
+			css={`
+				margin-top:0.5em;
+			`}
+		>
+			<Button 
+				onClick={()=>onClick(-1)}
+				css={`background:transparent;`}
+			>
+				See less...
+			</Button>
+		</BorderedStyled>
+	}
+	</Container>
+	);
+}
+
+export const ReadMore = (props)=>{
+	const {children,...rest} = props;
+	const childRender = React.Children.toArray(children);
+	const [currentVisible,setCurrentVisible] = React.useState(1);
+
+	const setVisibleChild = (val)=>{
+		setCurrentVisible(currentVisible+val);
+	}
+
+	return(
+	<React.Fragment>
+	{
+		childRender.map((child,i)=>{
+
+			return(
+			<Container flex="column" key={i}>
+				<React.Fragment>
+				{currentVisible>i && child}
+				</React.Fragment>
+				<React.Fragment>
+				{
+					currentVisible==i+1 && 
+					<SeeMoreLess 
+						onClick = {setVisibleChild.bind(this)}
+						seeMore={i+1<childRender.length}
+						seeLess={currentVisible>1}
+					/>
+				}
+				</React.Fragment>
+			</Container>
+			);
+		})
+	}
+	</React.Fragment>
 	);
 }

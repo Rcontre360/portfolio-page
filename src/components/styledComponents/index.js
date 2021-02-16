@@ -22,7 +22,7 @@ export const colors = {
 
 const hover = {
 	scale:css`transform:scale(1.2); color:white;`,
-	colors:css``,
+	colors:css`transition:0.5s; color:white;`,
 	rotate3d:css`transform:rotate3d(0, 1, 0, 360deg);;`,
 	appear:css`opacity:1;`
 }
@@ -357,19 +357,23 @@ const beforeAfter = (width,height,color=colors["text"])=>{
 	`
 }
 
-const Border = styled.div`
-	transition:1s;
+const Border = styled.div.attrs(props=>({
+	width: props.width || "3px",
+	padding: props.padding || "0.5em",
+	delay: props.delay || "1s"
+}))`
+	transition:${props=>props.delay};
 	position:relative;
 	display: inline-block;
 	cursor: pointer;
 	background:transparent;
 	border:none;
 	overflow:hidden;
-	padding:0.5em;
+	padding:${props=>props.padding};
 	color:${colors["text"]};
 
 	&:before, &:after {
-		${beforeAfter("100%","3px",colors["text"])}
+		${props=>beforeAfter("100%",props.width,colors["text"])}
 	 	left:0;
 	}
 
@@ -383,10 +387,10 @@ const Border = styled.div`
 
 	& > *{
 		&:before, &:after{
-			${beforeAfter("100%","3px","white")}
+			${props=>beforeAfter("100%",props.width,"white")}
 			z-index:10;
 			left:0;
-			transition:1s;
+			transition:${props=>props.delay};
 		}
 		&:before{
 			transform:translateX(100%);
@@ -401,7 +405,7 @@ const Border = styled.div`
 	& > *{
 		& > *{
 			&:before, &:after{
-				${beforeAfter("3px","100%",colors["text"])}
+				${props=>beforeAfter(props.width,"100%",colors["text"])}
 				top:0;
 			}
 			&:before{
@@ -412,10 +416,10 @@ const Border = styled.div`
 			}
 			& > *{
 				&:before, &:after{
-					${beforeAfter("3px","100%","white")}
+					${props=>beforeAfter(props.width,"100%","white")}
 					z-index:10;
 					top:0;
-					transition:1s;
+					transition:${props=>props.delay};
 				}
 				&:before{
 					transform:translateY(100%);
@@ -430,17 +434,17 @@ const Border = styled.div`
 	}
 
 	&:hover{
-		transition:1s;
+		transition:${props=>props.delay};
 		color:white;
 		& > *{
 			&:before, &:after{
-				transition:1s;
+				transition:${props=>props.delay};
 				transform:translateX(0);
 			}
 			& > *{
 				& > *{
 					&:before, &:after{
-						transition:1s;
+						transition:${props=>props.delay};
 						transform:translateX(0);
 					}
 				}
