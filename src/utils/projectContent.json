@@ -25,7 +25,7 @@
 
 				{
 				"title":"Links",
-				"content":"<br><h3>View live project</h3><a>https://somedomain.com/application</a><br><br><h3>View code</h3><a>https://github.com/Rcontre360/Chat-Application</a>",
+				"content":"<br><h3>View live project</h3><a>https://chat-app-rcontre.herokuapp.com/</a><br><br><h3>View code</h3><a>https://github.com/Rcontre360/Chat-Application</a>",
 				"to":"/links",
 				"router":true
 				}
@@ -42,7 +42,7 @@
 			"originalRoute":"/chat_app",
 			"labels":["javascript","react","node","express","mongo"],
 			"links":{
-				"live":"#",
+				"live":"https://chat-app-rcontre.herokuapp.com/",
 				"code":"https://github.com/Rcontre360/Chat-Application"
 			},
 			"id":0
