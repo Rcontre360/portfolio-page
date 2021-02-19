@@ -118,7 +118,7 @@
 				},
 				{
 					"title":"Links",
-					"content":"<br><h3>View live project</h3><a>https://somedomain.com/application</a><br><br><h3>View code</h3><a>https://github.com/Rcontre360/Chat-Application</a>",
+					"content":"<br><h3>View live project</h3><a>https://rcontre360.github.io/landing-page/</a><br><br><h3>View code</h3><a>https://github.com/Rcontre360/landing-page</a>",
 					"to":"/links",
 					"router":true
 				}
@@ -133,8 +133,8 @@
 			"originalRoute":"/landing_page",
 			"labels":["webpage"],
 			"links":{
-				"live":"#",
-				"code":"https://github.com/Rcontre360/Chat-Application"
+				"live":"https://rcontre360.github.io/landing-page/",
+				"code":"https://github.com/Rcontre360/landing-page"
 			},
 			"id":3
 		},
